@@ -1,3 +1,3 @@
 # OOP project
 
-Banking GUI project created with C++ OOP
+Banking GUI project created with C++ OOP and wxWIDGETS
