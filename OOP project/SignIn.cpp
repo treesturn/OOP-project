@@ -1,19 +1,29 @@
-#include "MainFrame.h"
+#include "SignIn.h"
 #include "HomePage.h"
 #include <wx/wx.h>
 
 
-void MainFrame::setusername(std::string new_username) {
+void SignIn::setusername(std::string new_username) {
 	
 	username = new_username;
 }
 
-std::string MainFrame::getusername()
+void SignIn::setpassword(std::string new_password) {
+	
+	password = new_password;
+}
+
+std::string SignIn::getusername()
 {
 	return username;
 }
 
-MainFrame::MainFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title) {
+std::string SignIn::getpassword()
+{
+	return password;
+}
+
+SignIn::SignIn(const wxString& title):wxFrame(nullptr, wxID_ANY, title) {
 
 	wxPanel* panel = new wxPanel(this);
 
@@ -26,18 +36,18 @@ MainFrame::MainFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title) {
 
 	//password input textbox
 	passwordinput = new wxTextCtrl(panel, wxID_ANY, "", wxPoint(10, 150), wxSize(200, -1));
-	password = passwordinput->GetValue().ToStdString();
+	setpassword(passwordinput->GetValue().ToStdString());
 
 
 	//binding login button to event
-	loginbutton->Bind(wxEVT_BUTTON,&MainFrame::OnLoginButtonClicked, this);
+	loginbutton->Bind(wxEVT_BUTTON,&SignIn::OnLoginButtonClicked, this);
 
 	CreateStatusBar();
 
 }
 
 //When Login Button is Clicked
-void MainFrame::OnLoginButtonClicked(wxCommandEvent& event) {
+void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 
 	username = usernameinput->GetValue();
 	password = passwordinput->GetValue();
@@ -47,7 +57,7 @@ void MainFrame::OnLoginButtonClicked(wxCommandEvent& event) {
 		wxLogMessage("Username or password must not be empty");
 
 	}
-	else if ((getusername() == "Triston"))
+	else if ((getusername() == "Triston") && (getpassword() == "123"))
 	{
 		wxLogStatus("Login Button Clicked");
 		HomePage* homepage = new HomePage("HomePage");

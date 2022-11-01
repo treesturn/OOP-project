@@ -138,14 +138,14 @@
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="HomePage.cpp" />
-    <ClCompile Include="MainFrame.cpp" />
+    <ClCompile Include="SignIn.cpp" />
     <ClCompile Include="OOP project.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="HomePage.h" />
-    <ClInclude Include="MainFrame.h" />
+    <ClInclude Include="SignIn.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

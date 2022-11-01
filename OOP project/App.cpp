@@ -1,17 +1,18 @@
 #include "App.h"
-#include "MainFrame.h"
+#include "SignIn.h"
 #include "Account.h"
 #include <wx/wx.h>
 
+//macro to start app
 wxIMPLEMENT_APP(App);
 
 bool App::OnInit() {
 
 
 	//start the sign in page frame
-	MainFrame* mainFrame = new MainFrame("Sign In Page");
-	mainFrame->SetClientSize(400, 200);
-	mainFrame->Center();
-	mainFrame->Show();
+	SignIn* signin = new SignIn("Sign In Page");
+	signin->SetClientSize(400, 200);
+	signin->Center();
+	signin->Show();
 	return true;
 }

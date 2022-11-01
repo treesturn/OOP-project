@@ -8,7 +8,6 @@ Account::Account()
 
 }
 
-
 //parameterized constructor implementation
 Account::Account(string pAccount_username, int pAccount_num, double pAccount_bal)
 {

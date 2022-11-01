@@ -1,22 +1,26 @@
-#ifndef MAINFRAME_H
-#define MAINFRAME_H
+#ifndef SIGNIN_H
+#define SIGNIN_H
 
 #pragma once
 #include <wx/wx.h>
 
 
-class MainFrame:public wxFrame{
+class SignIn:public wxFrame{
 
 public:
 
 	//parameterized construnctor
-	MainFrame(const wxString& title);
+	SignIn(const wxString& title);
 
 	//username mutator
 	void setusername(std::string new_username);
 
+	void setpassword(std::string new_password);
+
 	//username getter
 	std::string getusername();
+
+	std::string getpassword();
 
 private:
 
@@ -31,4 +35,4 @@ private:
 	void OnLoginButtonClicked(wxCommandEvent& event);
 };
 
-#endif // MAINFRAME_H
+#endif // SIGNIN_H
