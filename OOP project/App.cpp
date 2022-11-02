@@ -11,6 +11,7 @@ bool App::OnInit() {
 
 	//start the sign in page frame
 	SignIn* signin = new SignIn("Sign In Page");
+	signin->SetBackgroundColour(wxColor(40, 41, 52));
 	signin->SetClientSize(400, 500);
 	signin->Center();
 	signin->Show();

@@ -147,6 +147,9 @@
     <ClInclude Include="HomePage.h" />
     <ClInclude Include="SignIn.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Triston Bank App.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -57,7 +57,7 @@ SignIn::SignIn(const wxString& title):wxFrame(nullptr, wxID_ANY, title) {
 
 }
 
-//When Login Button is Clicked
+//When Login Button is Clicked, create HomePage
 void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 
 	username = usernameinput->GetValue();
@@ -72,7 +72,7 @@ void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 	{
 		wxLogStatus("Login Button Clicked");
 		HomePage* homepage = new HomePage("HomePage");
-		homepage->SetClientSize(800, 600);
+		homepage->SetClientSize(600, 600);
 		homepage->Center();
 		homepage->Show();
 
