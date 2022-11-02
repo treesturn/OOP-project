@@ -9,6 +9,9 @@ class SignIn:public wxFrame{
 
 public:
 
+	//default constructor
+	SignIn();
+	
 	//parameterized construnctor
 	SignIn(const wxString& title);
 

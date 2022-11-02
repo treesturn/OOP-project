@@ -11,7 +11,7 @@ bool App::OnInit() {
 
 	//start the sign in page frame
 	SignIn* signin = new SignIn("Sign In Page");
-	signin->SetClientSize(400, 200);
+	signin->SetClientSize(400, 500);
 	signin->Center();
 	signin->Show();
 	return true;
