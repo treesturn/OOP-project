@@ -20,7 +20,7 @@ HomePage::HomePage(const wxString& title) :wxFrame(nullptr, wxID_ANY, title) {
 	headerpanel->SetSize(600, 50);
 
 	btmpanel = new wxPanel(this);
-	btmpanel->SetBackgroundColour(wxColor(240, 240, 245));
+	btmpanel->SetBackgroundColour(wxColor(84, 82, 94));
 
 	wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
 	sizer->Add(headerpanel, 0, wxEXPAND | wxLEFT | wxTOP | wxRIGHT, 0);
@@ -28,6 +28,13 @@ HomePage::HomePage(const wxString& title) :wxFrame(nullptr, wxID_ANY, title) {
 	
 
 	this->SetSizerAndFit(sizer);
+
+	savingsacc_panel = new wxPanel(btmpanel);
+	savingsacc_panel->SetBackgroundColour(wxColor(240, 240, 246));
+	savingsacc_panel->SetSize(200, 300);
+	savingsacc_panel->SetPosition(wxPoint(50, 100));
+
+
 
 	//display 
 	Welcome_Message = new wxStaticText(headerpanel, wxID_ANY, "Welcome " + a.get_Account_username() + "\n", wxPoint(10, 60));
@@ -37,13 +44,13 @@ HomePage::HomePage(const wxString& title) :wxFrame(nullptr, wxID_ANY, title) {
 	Welcome_Message->SetFont(font);
 
 	//display username on Homepage
-	Acc_username = new wxStaticText(btmpanel, wxID_ANY, a.get_Account_username(), wxPoint(10, 100));
+	Acc_username = new wxStaticText(savingsacc_panel, wxID_ANY, a.get_Account_username(), wxPoint(10, 100));
 
 	//display account id on Homepage
-	Acc_id = new wxStaticText(btmpanel, wxID_ANY, to_string(a.get_Account_num()), wxPoint(10, 150));
+	Acc_id = new wxStaticText(savingsacc_panel, wxID_ANY, to_string(a.get_Account_num()), wxPoint(10, 150));
 
 	//display account balance on Homepage
-	Acc_bal = new wxStaticText(btmpanel, wxID_ANY, to_string(a.get_Account_bal()), wxPoint(10, 200));
+	Acc_bal = new wxStaticText(savingsacc_panel, wxID_ANY, to_string(a.get_Account_bal()), wxPoint(10, 200));
 
 	CreateStatusBar();
 

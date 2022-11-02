@@ -18,7 +18,9 @@ private:
 
 	wxPanel* headerpanel;
 	wxPanel* btmpanel;
-	
+
+	wxPanel* savingsacc_headerpanel;
+	wxPanel* savingsacc_panel;
 
 	wxStaticText* text;
 
