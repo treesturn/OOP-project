@@ -1,6 +1,10 @@
 #include "SignIn.h"
 #include "HomePage.h"
+#include "Account.h"
 #include <wx/wx.h>
+
+//instantiate an Account 
+Account a = Account("Triston Chan", "123", 2101793, 2500.50);
 
 //Mutators
 void SignIn::setusername(std::string new_username) {
@@ -8,9 +12,9 @@ void SignIn::setusername(std::string new_username) {
 	username = new_username;
 }
 
-void SignIn::setpassword(std::string new_password) {
+void SignIn::setpin(std::string new_pin) {
 	
-	password = new_password;
+	pin = new_pin;
 }
 
 //Getters
@@ -19,9 +23,9 @@ std::string SignIn::getusername()
 	return username;
 }
 
-std::string SignIn::getpassword()
+std::string SignIn::getpin()
 {
-	return password;
+	return pin;
 }
 
 //Sign In default constructor
@@ -32,22 +36,28 @@ SignIn::SignIn(){
 //Sign In parameterized constructor
 SignIn::SignIn(const wxString& title):wxFrame(nullptr, wxID_ANY, title) {
 
+
 	wxPanel* panel = new wxPanel(this);
+	
+	//Bank Logo
+	wxPNGHandler* handler = new wxPNGHandler;
+	wxImage::AddHandler(handler);
+	wxStaticBitmap* image;
+	image = new wxStaticBitmap(panel, wxID_ANY, wxBitmap("Triston Bank App Smaller.png", wxBITMAP_TYPE_PNG), wxPoint(70, 15), wxSize(250, 250));
 
 
 	//username input textbox
-	usernameinput = new wxTextCtrl(panel, wxID_ANY, "", wxPoint(100, 170), wxSize(200, -1));
+	usernameinput = new wxTextCtrl(panel, wxID_ANY, "", wxPoint(100, 250), wxSize(200, -1));
 	usernameinput->SetHint("Username");
 	setusername(usernameinput->GetValue().ToStdString());
 
 	//password input textbox
-	passwordinput = new wxTextCtrl(panel, wxID_ANY, "", wxPoint(100, 220), wxSize(200, -1), wxTE_PASSWORD);
-	passwordinput->SetHint("Password");
-	setpassword(passwordinput->GetValue().ToStdString());
+	pininput = new wxTextCtrl(panel, wxID_ANY, "", wxPoint(100, 300), wxSize(200, -1), wxTE_PASSWORD);
+	pininput->SetHint("Pin");
+	setpin(pininput->GetValue().ToStdString());
 
 	//log in button
-	loginbutton = new wxButton(panel, wxID_ANY, "Log In", wxPoint(160, 270), wxSize(80, 35));
-
+	loginbutton = new wxButton(panel, wxID_ANY, "Log In", wxPoint(160, 350), wxSize(80, 35));
 
 
 	//binding login button to event
@@ -61,14 +71,14 @@ SignIn::SignIn(const wxString& title):wxFrame(nullptr, wxID_ANY, title) {
 void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 
 	username = usernameinput->GetValue();
-	password = passwordinput->GetValue();
+	pin = pininput->GetValue();
 
-	if (username.empty() || password.empty())
+	if (username.empty() || pin.empty())
 	{
 		wxLogMessage("Username or password must not be empty");
 
 	}
-	else if ((getusername() == "Triston") && (getpassword() == "123"))
+	else if ((getusername() == a.get_Account_username()) && (getpin() == a.get_Account_pin()))
 	{
 		wxLogStatus("Login Button Clicked");
 		HomePage* homepage = new HomePage("HomePage");

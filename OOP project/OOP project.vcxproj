@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="Current_Account.cpp" />
     <ClCompile Include="HomePage.cpp" />
     <ClCompile Include="SignIn.cpp" />
     <ClCompile Include="OOP project.cpp" />
@@ -144,11 +145,9 @@
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="App.h" />
+    <ClInclude Include="Current_Account.h" />
     <ClInclude Include="HomePage.h" />
     <ClInclude Include="SignIn.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\Triston Bank App.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

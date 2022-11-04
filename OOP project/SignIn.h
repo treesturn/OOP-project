@@ -18,21 +18,22 @@ public:
 	//username mutator
 	void setusername(std::string new_username);
 
-	void setpassword(std::string new_password);
+	void setpin(std::string new_pin);
 
 	//username getter
 	std::string getusername();
 
-	std::string getpassword();
+	std::string getpin();
 
 private:
 
 	//variables
 	std::string username = "";
-	std::string password = "";
+	std::string pin = "";
 	wxTextCtrl* usernameinput;
-	wxTextCtrl* passwordinput;
+	wxTextCtrl* pininput;
 	wxButton* loginbutton;
+	wxBitmap  my_square;
 	
 	//when login button clicked
 	void OnLoginButtonClicked(wxCommandEvent& event);

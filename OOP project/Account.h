@@ -9,7 +9,7 @@ public:
 	Account();
 
 	//parameterized constructor
-	Account(std::string pAccount_username, int pAccount_num, double pAccount_bal);
+	Account(std::string pAccount_username, std::string pAccount_pin, int pAccount_num, float pAccount_bal);
 
 
 
@@ -18,21 +18,24 @@ public:
 
 	void set_Account_num(int num);
 
-	void set_Account_bal(double bal);
+	void set_Account_bal(float bal);
 
 	//getters
 	std::string get_Account_username() const;
 
 	int get_Account_num() const;
 
-	double get_Account_bal() const;
+	float get_Account_bal() const;
+
+	std::string get_Account_pin() const;
 
 private:
 
 	//variables
 	std::string Account_username;
+	std::string Account_pin;
 	int Account_num;
-	double Account_bal;
+	float Account_bal;
 
 };
 

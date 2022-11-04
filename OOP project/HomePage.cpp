@@ -13,7 +13,7 @@ HomePage::HomePage() {
 HomePage::HomePage(const wxString& title) :wxFrame(nullptr, wxID_ANY, title) {
 
 	//instantiate an Account 
-	Account a = Account("Triston Chan", 2101793, 2500.50);
+	Account a = Account("Triston Chan", "123", 2101793, 2500.50);
 
 	headerpanel = new wxPanel(this);
 	headerpanel->SetBackgroundColour(wxColor(40, 41, 52));

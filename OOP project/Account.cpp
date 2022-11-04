@@ -9,11 +9,12 @@ Account::Account()
 }
 
 //parameterized constructor implementation
-Account::Account(string pAccount_username, int pAccount_num, double pAccount_bal)
+Account::Account(string pAccount_username, string pAccount_pin, int pAccount_num, float pAccount_bal)
 {
 	Account_username = pAccount_username;
 	Account_num = pAccount_num;
 	Account_bal = pAccount_bal;
+	Account_pin = pAccount_pin;
 }
 
 //mutators
@@ -27,7 +28,7 @@ void Account::set_Account_num(int num)
 	Account_num = num;
 }
 
-void Account::set_Account_bal(double bal)
+void Account::set_Account_bal(float bal)
 {
 	Account_bal = bal;
 }
@@ -43,7 +44,12 @@ int Account::get_Account_num() const
 	return Account_num;
 }
 
-double Account::get_Account_bal() const
+float Account::get_Account_bal() const
 {
 	return Account_bal;
+}
+
+string Account::get_Account_pin() const
+{
+	return Account_pin;
 }

@@ -30,6 +30,9 @@
     <ClCompile Include="Account.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Current_Account.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SignIn.h">
@@ -44,10 +47,8 @@
     <ClInclude Include="Account.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\Triston Bank App.png">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <ClInclude Include="Current_Account.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
