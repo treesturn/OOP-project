@@ -4,7 +4,7 @@
 #include <wx/wx.h>
 
 //instantiate an Account 
-Account a = Account("Triston Chan", "123", 2101793, 2500.50);
+Account a = Account("Triston Chan", 2101793, "123", 2500.50);
 
 //Mutators
 void SignIn::setusername(std::string new_username) {

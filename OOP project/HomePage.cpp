@@ -1,5 +1,7 @@
 #include "HomePage.h"
 #include "Account.h"
+#include "Savings_Account.h"
+#include "Current_Account.h"
 #include <wx/wx.h>
 #include <string.h>
 using namespace std;
@@ -12,8 +14,9 @@ HomePage::HomePage() {
 //Home Page parameterized constructor
 HomePage::HomePage(const wxString& title) :wxFrame(nullptr, wxID_ANY, title) {
 
-	//instantiate an Account 
-	Account a = Account("Triston Chan", "123", 2101793, 2500.50);
+	//instantiate the Accounts
+	Savings_Account a = Savings_Account("Triston Chan", 2101793, "123", 2500.50, 0.04);
+	Current_Account b = Current_Account("Triston Chan", 2101793, "123", 2500.50);
 
 	//Header top panel
 	headerpanel = new wxPanel(this);
@@ -64,20 +67,38 @@ HomePage::HomePage(const wxString& title) :wxFrame(nullptr, wxID_ANY, title) {
 	currentacc_colorpanel->SetPosition(wxPoint(340, 70));
 
 	//display Welcome message
-	Welcome_Message = new wxStaticText(headerpanel, wxID_ANY, "Welcome " + a.get_Account_username() + "\n", wxPoint(10, 60));
+	Welcome_Message = new wxStaticText(headerpanel, wxID_ANY, "Welcome " + a.get_Account_username(), wxPoint(10, 50));
 	wxFont font = Welcome_Message->GetFont();
 	font.SetPointSize(13);
 	font.SetWeight(wxFONTWEIGHT_BOLD);
 	Welcome_Message->SetFont(font);
 
-	//display username on Homepage
+	//display savingsacc title header on Homepage savingsacc box
+	Savingsacc_header = new wxStaticText(savingsacc_headerpanel, wxID_ANY, a.title_header(), wxPoint(19, 30));
+	wxFont font2 = Savingsacc_header->GetFont();
+	font2.SetPointSize(11);
+	font2.SetWeight(wxFONTWEIGHT_BOLD);
+	Savingsacc_header->SetFont(font2);
+
+	//display username on Homepage savingsacc box
 	Acc_username = new wxStaticText(savingsacc_panel, wxID_ANY, a.get_Account_username(), wxPoint(10, 100));
 
-	//display account id on Homepage
+	//display account id on Homepage savingsacc box
 	Acc_id = new wxStaticText(savingsacc_panel, wxID_ANY, to_string(a.get_Account_num()), wxPoint(10, 150));
 
-	//display account balance on Homepage
+	//display account balance on Homepage savingsacc box
 	Acc_bal = new wxStaticText(savingsacc_panel, wxID_ANY, to_string(a.get_Account_bal()), wxPoint(10, 200));
+
+
+
+	//display currentsacc title header on Homepage currentsacc box
+	Currentsacc_header = new wxStaticText(currentacc_headerpanel, wxID_ANY, b.title_header(), wxPoint(20, 30));
+	wxFont font3 = Currentsacc_header->GetFont();
+	font3.SetPointSize(11);
+	font3.SetWeight(wxFONTWEIGHT_BOLD);
+	Currentsacc_header->SetFont(font3);
+
+
 
 	CreateStatusBar();
 

@@ -32,6 +32,12 @@ private:
 	//display 
 	wxStaticText* Welcome_Message; 
 
+	//display savings header on Homepage
+	wxStaticText* Savingsacc_header;
+
+	//display current header on Homepage
+	wxStaticText* Currentsacc_header;
+
 	//display username on Homepage
 	wxStaticText* Acc_username;
 

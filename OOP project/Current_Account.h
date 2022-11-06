@@ -1,25 +1,34 @@
+#ifndef CURRENT_ACCOUNT_H
+#define CURRENT_ACCOUNT_H
+
 #pragma once
 #include "Account.h"
 
 class Current_Account:public Account
 {
 public:
-    // Constructors
+    //default constructors
     Current_Account();
-    Current_Account(std::string pAccount_username, std::string pAccount_pin, int pAccount_num, float pAccount_bal, float pminmumAmount);
 
-    // Destructor
+    //parameterized constructors
+    Current_Account(std::string pAccount_username, int pAccount_num, std::string pAccount_pin, float pAccount_bal);
+
+    //destructor
     ~Current_Account();
 
-    // Function to overwrite
-    void print();
+    //pure virtual function from parent class
+    std::string title_header();
 
 private:
 
-    float Account_bal;
-    float minimumAmount;
-    std::string Account_username; 
-    std::string Account_pin; 
+    //members that will be inherited from parent class
+    std::string Account_username;
     int Account_num;
+    float Account_bal;
+    std::string Account_pin;
+    
+    float Current_minimumAmount;
+    
 };
 
+#endif // CURRENT_ACCOUNT_H

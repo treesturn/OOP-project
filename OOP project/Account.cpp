@@ -2,19 +2,26 @@
 #include <string>
 using namespace std;
 
-//default constructor implementation
+//default constructor 
 Account::Account()
 {
 
 }
 
-//parameterized constructor implementation
-Account::Account(string pAccount_username, string pAccount_pin, int pAccount_num, float pAccount_bal)
+//parameterized constructor 
+Account::Account(std::string pAccount_username, int pAccount_num, std::string pAccount_pin, float pAccount_bal)
 {
 	Account_username = pAccount_username;
 	Account_num = pAccount_num;
-	Account_bal = pAccount_bal;
 	Account_pin = pAccount_pin;
+	Account_bal = pAccount_bal;
+	
+}
+
+//destructor
+Account::~Account()
+{
+
 }
 
 //mutators
@@ -52,4 +59,9 @@ float Account::get_Account_bal() const
 string Account::get_Account_pin() const
 {
 	return Account_pin;
+}
+
+std::string Account::title_header()
+{
+	return ("Your Account");
 }

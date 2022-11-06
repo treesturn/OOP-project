@@ -1,3 +1,6 @@
+#ifndef ACCOUNT_H
+#define ACCOUNT_H
+
 #pragma once
 #include <string>
 
@@ -9,10 +12,11 @@ public:
 	Account();
 
 	//parameterized constructor
-	Account(std::string pAccount_username, std::string pAccount_pin, int pAccount_num, float pAccount_bal);
+	Account(std::string pAccount_username, int pAccount_num, std::string pAccount_pin, float pAccount_bal);
 
-
-
+	//destructor
+	~Account();
+	
 	//mutators
 	void set_Account_username(std::string text);
 
@@ -29,13 +33,17 @@ public:
 
 	std::string get_Account_pin() const;
 
+	//virtual function that will be overide
+	virtual std::string title_header();
+
 private:
 
-	//variables
+	//members
 	std::string Account_username;
-	std::string Account_pin;
 	int Account_num;
+	std::string Account_pin;
 	float Account_bal;
 
 };
 
+#endif // ACCOUNT_H

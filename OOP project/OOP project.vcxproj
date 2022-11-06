@@ -139,6 +139,7 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Current_Account.cpp" />
     <ClCompile Include="HomePage.cpp" />
+    <ClCompile Include="Savings_Account.cpp" />
     <ClCompile Include="SignIn.cpp" />
     <ClCompile Include="OOP project.cpp" />
   </ItemGroup>
@@ -147,6 +148,7 @@
     <ClInclude Include="App.h" />
     <ClInclude Include="Current_Account.h" />
     <ClInclude Include="HomePage.h" />
+    <ClInclude Include="Savings_Account.h" />
     <ClInclude Include="SignIn.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
