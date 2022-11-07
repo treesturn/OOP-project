@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
+    <ClCompile Include="AccountMgr.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Current_Account.cpp" />
     <ClCompile Include="HomePage.cpp" />
@@ -145,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
+    <ClInclude Include="AccountMgr.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="Current_Account.h" />
     <ClInclude Include="HomePage.h" />
