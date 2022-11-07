@@ -5,8 +5,9 @@
 #include <wx/wx.h>
 
 //instantiate an Account 
-Account a = Account("Triston Chan", 2101793, "123", 2500.50);
-
+//Account a = Account("Triston Chan", 2101793, "123", 2500.50);
+// 
+//instantiate Sign In page AccountMgr 
 AccountMgr SI_accmgr;
 
 //Mutators
@@ -73,6 +74,7 @@ SignIn::SignIn(const wxString& title):wxFrame(nullptr, wxID_ANY, title) {
 //When Login Button is Clicked, create HomePage
 void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 
+	bool loggedin = false;
 	username = usernameinput->GetValue();
 	pin = pininput->GetValue();
 
@@ -86,8 +88,10 @@ void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 
 		for (Account acc : SI_accmgr.savingsAccs)
 		{
-			if ((username == acc.get_Account_username()) && pin == acc.get_Account_pin())
+
+			if (username == acc.get_Account_username() && pin == acc.get_Account_pin())
 			{
+
 
 				wxLogStatus("Login Button Clicked");
 				HomePage* homepage = new HomePage("HomePage");
@@ -100,14 +104,20 @@ void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 
 				//Close login page, release memory
 				Close(true);
+				loggedin = true;
 				break;
 			}
-			else {
 
-				wxLogMessage("Wrong Credentials");
-			}
+			
+		}
+		if (!(loggedin)) {
+			wxLogMessage("Wrong Credentials");
 		}
 	}
+
+	
+
+
 
 	//if (username.empty() || pin.empty())
 	//{
