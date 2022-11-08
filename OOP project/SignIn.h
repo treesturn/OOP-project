@@ -34,6 +34,7 @@ private:
 	wxTextCtrl* pininput;
 	wxButton* loginbutton;
 	wxBitmap  my_square;
+
 	
 	//when login button clicked
 	void OnLoginButtonClicked(wxCommandEvent& event);

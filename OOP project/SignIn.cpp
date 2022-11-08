@@ -4,9 +4,7 @@
 #include "Account.h"
 #include <wx/wx.h>
 
-//instantiate an Account 
-//Account a = Account("Triston Chan", 2101793, "123", 2500.50);
-// 
+
 //instantiate Sign In page AccountMgr 
 AccountMgr SI_accmgr;
 

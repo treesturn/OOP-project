@@ -24,5 +24,5 @@ AccountMgr::~AccountMgr()
 //getters
 std::vector<Savings_Account> AccountMgr::getsavingsAcc_vect()
 {
-	return savingsAccs;
+	return savingsAccs_DB;
 }

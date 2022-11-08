@@ -33,19 +33,23 @@ private:
     std::string action;
 
     //vector of class Savings_Account type
-    std::vector<Savings_Account> savingsAccs = {
+    std::vector<Savings_Account> savingsAccs_DB = {
 
       {"Zeming", 2101800, "124", 4000.50, 0.04},
       {"Triston", 2101793, "123", 2500.50, 0.04},
       {"Brook", 2101789, "125", 5600.50, 0.04},
-      {"Jonathan", 2101200, "126", 6500.50, 0.04},
+      {"Jonathan", 2101200, "126", 6500.50, 0.04}
 
     };
 
     //vector of class Current_Account type
-    std::vector<Current_Account> currentAccs = {
+    std::vector<Current_Account> currentAccs_DB = {
 
-      {"Triston Chan", 2101793, "123", 2500.50}
+      {"Zeming", 2101800, "124", 4000.50},
+      {"Triston", 2101793, "123", 2500.50},
+      {"Brook", 2101789, "125", 5600.50},
+      {"Jonathan", 2101200, "126", 6500.50}
+
     };
 
 

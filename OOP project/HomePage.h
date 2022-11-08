@@ -18,6 +18,7 @@ private:
 
 	wxPanel* headerpanel;
 	wxPanel* btmpanel;
+	wxPanel* transferfunds_panel;
 
 	wxPanel* savingsacc_colorpanel;
 	wxPanel* savingsacc_headerpanel;
@@ -36,7 +37,7 @@ private:
 	wxStaticText* Savingsacc_header;
 
 	//display current header on Homepage
-	wxStaticText* Currentsacc_header;
+	wxStaticText* Currentacc_header;
 
 	//display username on Homepage
 	wxStaticText* Acc_username;
@@ -47,7 +48,13 @@ private:
 	//display account balance on Homepage
 	wxStaticText* Acc_bal;
 
-
+	// funds amount input box in transferfunds box
+	wxTextCtrl* funds_amt;
+	wxStaticText* fundsamt_header;
+	wxChoice* acctype;
+	wxStaticText* from_acctype;
+	wxChoice* acctype2;
+	wxStaticText* To_acctype;
 };
 
 #endif // HOMEPAGE_H
