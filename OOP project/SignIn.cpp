@@ -86,7 +86,7 @@ void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 
 	else {
 
-		for (Account acc : SI_accmgr.savingsAccs)
+		for (Account acc : SI_accmgr.getsavingsAcc_vect())
 		{
 
 			if (username == acc.get_Account_username() && pin == acc.get_Account_pin())
@@ -99,8 +99,6 @@ void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 				homepage->Center();
 				homepage->Show();
 
-				//sets this acc to be the used throughout the GUI
-				//homepage->getHP_accmgr().set_accnum(acc.get_Account_num());
 
 				//Close login page, release memory
 				Close(true);
@@ -114,30 +112,5 @@ void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 			wxLogMessage("Wrong Credentials");
 		}
 	}
-
-	
-
-
-
-	//if (username.empty() || pin.empty())
-	//{
-	//	wxLogMessage("Username or password must not be empty");
-
-	//}
-	//else if ((getusername() == a.get_Account_username()) && (getpin() == a.get_Account_pin()))
-	//{
-	//	wxLogStatus("Login Button Clicked");
-	//	HomePage* homepage = new HomePage("HomePage");
-	//	homepage->SetClientSize(600, 600);
-	//	homepage->Center();
-	//	homepage->Show();
-
-	//	//Close login page, release memory
-	//	Close(true);
-	//}
-
-	//else {
-	//	wxLogMessage("Wrong Credentials");
-	//}
 
 }

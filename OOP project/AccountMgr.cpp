@@ -21,21 +21,8 @@ AccountMgr::~AccountMgr()
 
 }
 
-//mutator
-//takes accnum from SignIn window choosen acc and sets it as that acc num
-void AccountMgr::set_accnum(int num)
+//getters
+std::vector<Savings_Account> AccountMgr::getsavingsAcc_vect()
 {
-	accnum = num;
+	return savingsAccs;
 }
-
-//Savings_Account AccountMgr::intialize_chosen_acc()
-//{
-//  for (Savings_Account acc : savingsAccs)
-//  {
-//    if (acc.get_Account_num() == accnum)
-//    {
-//      return acc;
-//    }
-//
-//  }
-//}
