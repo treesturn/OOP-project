@@ -30,7 +30,8 @@ public:
 	float getInterest() const;
 
 	//pure virtual function from parent class
-	std::string title_header();
+	std::string title_header() const override;
+
 
 private:
 	

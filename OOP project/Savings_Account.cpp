@@ -43,7 +43,7 @@ float Savings_Account::getInterest() const
 	return Savings_interest;
 }
 
-std::string Savings_Account::title_header()
+std::string Savings_Account::title_header() const
 {
 	return ("Your Savings Account");
 }

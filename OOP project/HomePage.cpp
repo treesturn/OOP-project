@@ -22,6 +22,7 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	Savings_Account a = Savings_Account("Triston Chan", 2101793, "123", 2500.50, 0.04);
 	Current_Account b = Current_Account("Triston Chan", 2101793, "123", 2500.50);
 
+
 	//instantiate Home Page page AccountMgr 
 	AccountMgr HP_accmgr;
 

@@ -81,18 +81,15 @@ void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 		wxLogMessage("Username or password must not be empty");
 
 	}
-
 	else {
-
-		for (Account acc : SI_accmgr.getsavingsAcc_vect())
+		for (Account* acc : SI_accmgr.getAcc_DB())
 		{
-
-			if (username == acc.get_Account_username() && pin == acc.get_Account_pin())
+			if (username == acc->get_Account_username() && pin == acc->get_Account_pin())
 			{
 
 
 				wxLogStatus("Login Button Clicked");
-				HomePage* homepage = new HomePage("HomePage", acc.get_Account_username(), acc.get_Account_num());
+				HomePage* homepage = new HomePage("HomePage", acc->get_Account_username(), acc->get_Account_num());
 				homepage->SetClientSize(600, 600);
 				homepage->Center();
 				homepage->Show();
@@ -103,14 +100,11 @@ void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 				loggedin = true;
 				break;
 			}
-
-			
 		}
 		if (!(loggedin)) {
 			wxLogMessage("Wrong Credentials");
 		}
 	}
-
 }
 
 //destructor

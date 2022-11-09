@@ -61,7 +61,7 @@ string Account::get_Account_pin() const
 	return Account_pin;
 }
 
-std::string Account::title_header()
-{
-	return ("Your Account");
-}
+//std::string Account::title_header()
+//{
+//	return ("Your Account");
+//}

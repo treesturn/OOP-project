@@ -14,37 +14,30 @@ public:
     AccountMgr();
 
     //parameterized constructor
-    AccountMgr(std::string p_action);
+    
 
     //destructor
     ~AccountMgr();
 
     //getters
-    std::vector<Savings_Account> getsavingsAcc_vect();
+    std::vector<Account*>getAcc_DB();
 
   
 
 private:
 
-    std::string action;
+    //vector of Account pointer type
+    std::vector<Account*> Accs_DB = {
 
-    //vector of class Savings_Account type
-    std::vector<Savings_Account> savingsAccs_DB = {
+      new Savings_Account{"Zeming", 2101800, "124", 4000.50, 0.04},
+      new Savings_Account{"Triston", 2101793, "123", 2500.50, 0.04},
+      new Savings_Account{"Brook", 2101789, "125", 5600.50, 0.04},
+      new Savings_Account{"Jonathan", 2101200, "126", 6500.50, 0.04},
 
-      {"Zeming", 2101800, "124", 4000.50, 0.04},
-      {"Triston", 2101793, "123", 2500.50, 0.04},
-      {"Brook", 2101789, "125", 5600.50, 0.04},
-      {"Jonathan", 2101200, "126", 6500.50, 0.04}
-
-    };
-
-    //vector of class Current_Account type
-    std::vector<Current_Account> currentAccs_DB = {
-
-      {"Zeming", 2101800, "124", 4000.50},
-      {"Triston", 2101793, "123", 2500.50},
-      {"Brook", 2101789, "125", 5600.50},
-      {"Jonathan", 2101200, "126", 6500.50}
+      new Current_Account{"Zeming", 2101800, "124", 4000.50},
+      new Current_Account{"Triston", 2101793, "123", 2500.50},
+      new Current_Account{"Brook", 2101789, "125", 5600.50},
+      new Current_Account{"Jonathan", 2101200, "126", 6500.50}
 
     };
 

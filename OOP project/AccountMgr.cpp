@@ -10,10 +10,7 @@ AccountMgr::AccountMgr()
 }
 
 //parameterized constructor
-AccountMgr::AccountMgr(std::string p_action)
-{
-	action = p_action;
-}
+
 
 //destructor
 AccountMgr::~AccountMgr()
@@ -22,7 +19,7 @@ AccountMgr::~AccountMgr()
 }
 
 //getters
-std::vector<Savings_Account> AccountMgr::getsavingsAcc_vect()
+std::vector<Account*> AccountMgr::getAcc_DB()
 {
-	return savingsAccs_DB;
+	return Accs_DB;
 }

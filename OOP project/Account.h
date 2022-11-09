@@ -4,7 +4,7 @@
 #pragma once
 #include <string>
 
-//parent class 
+//parent class and an ABC
 class Account
 {
 public:
@@ -34,8 +34,8 @@ public:
 
 	std::string get_Account_pin() const;
 
-	//virtual function that will be overide
-	virtual std::string title_header();
+	//PURE virtual function that must be overidden in child class, making this class an ABC
+	virtual std::string title_header() const = 0;
 
 private:
 

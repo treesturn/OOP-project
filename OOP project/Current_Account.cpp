@@ -22,7 +22,7 @@ Current_Account::~Current_Account()
 
 }
 
-std::string Current_Account::title_header()
+std::string Current_Account::title_header() const
 {
     return ("Your Current Account");
 }
