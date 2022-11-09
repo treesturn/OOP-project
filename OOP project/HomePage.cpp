@@ -22,9 +22,11 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	Savings_Account a = Savings_Account("Triston Chan", 2101793, "123", 2500.50, 0.04);
 	Current_Account b = Current_Account("Triston Chan", 2101793, "123", 2500.50);
 
+	//instantiate an Account Manager
+	AccountMgr HP_accmgr(chosen_accnum);
 
 	//instantiate Home Page page AccountMgr 
-	AccountMgr HP_accmgr;
+	//AccountMgr HP_accmgr;
 
 	//Header top panel
 	headerpanel = new wxPanel(this);
@@ -99,13 +101,13 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	Savingsacc_header->SetForegroundColour(*wxWHITE);
 
 	//display username on Homepage savingsacc box
-	Acc_username = new wxStaticText(savingsacc_panel, wxID_ANY, a.get_Account_username(), wxPoint(10, 100));
+	Acc_username = new wxStaticText(savingsacc_panel, wxID_ANY, (HP_accmgr.getchosen_acc())->get_Account_username(), wxPoint(10, 100));
 
 	//display account id on Homepage savingsacc box
-	Acc_id = new wxStaticText(savingsacc_panel, wxID_ANY, to_string(a.get_Account_num()), wxPoint(10, 150));
+	Acc_id = new wxStaticText(savingsacc_panel, wxID_ANY, to_string((HP_accmgr.getchosen_acc())->get_Account_num()), wxPoint(10, 150));
 
 	//display account balance on Homepage savingsacc box
-	Acc_bal = new wxStaticText(savingsacc_panel, wxID_ANY, to_string(a.get_Account_bal()), wxPoint(10, 200));
+	Acc_bal = new wxStaticText(savingsacc_panel, wxID_ANY, to_string((HP_accmgr.getchosen_acc())->get_Account_bal()), wxPoint(10, 200));
 
 
 
