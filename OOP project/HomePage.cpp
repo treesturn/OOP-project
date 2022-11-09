@@ -13,7 +13,10 @@ HomePage::HomePage() {
 }
 
 //Home Page parameterized constructor
-HomePage::HomePage(const wxString& title) :wxFrame(nullptr, wxID_ANY, title) {
+HomePage::HomePage(const wxString& title, std::string username, int chosen_accnum) :wxFrame(nullptr, wxID_ANY, title) {
+
+	Acc_username_text = username;
+	chosen_accnum = chosen_accnum;
 
 	//instantiate the Accounts
 	Savings_Account a = Savings_Account("Triston Chan", 2101793, "123", 2500.50, 0.04);
@@ -79,7 +82,7 @@ HomePage::HomePage(const wxString& title) :wxFrame(nullptr, wxID_ANY, title) {
 
 
 	//display Welcome message
-	Welcome_Message = new wxStaticText(headerpanel, wxID_ANY, "Welcome " + a.get_Account_username() + "\n", wxPoint(10, 50));
+	Welcome_Message = new wxStaticText(headerpanel, wxID_ANY, "Welcome " + Acc_username_text + "\n", wxPoint(10, 50));
 	wxFont font = Welcome_Message->GetFont();
 	font.SetPointSize(13);
 	font.SetWeight(wxFONTWEIGHT_BOLD);
@@ -150,5 +153,11 @@ HomePage::HomePage(const wxString& title) :wxFrame(nullptr, wxID_ANY, title) {
 
 	CreateStatusBar();
 
+
+}
+
+//destructor
+HomePage::~HomePage()
+{
 
 }

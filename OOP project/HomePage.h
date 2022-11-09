@@ -12,32 +12,23 @@ public:
 	HomePage();
 
 	//parameterized construnctor
-	HomePage(const wxString& title);
+	HomePage(const wxString& title, std::string username, int chosen_accnum);
+
+	//destructor
+	~HomePage();
 
 private:
 
 	wxPanel* headerpanel;
 	wxPanel* btmpanel;
-	wxPanel* transferfunds_panel;
-
-	wxPanel* savingsacc_colorpanel;
-	wxPanel* savingsacc_headerpanel;
-	wxPanel* savingsacc_panel;
-
-	wxPanel* currentacc_colorpanel;
-	wxPanel* currentacc_headerpanel;
-	wxPanel* currentacc_panel;
-
+	
 	wxStaticText* text;
 
 	//display 
 	wxStaticText* Welcome_Message; 
+	std::string Acc_username_text;
+	int chosen_accnum;
 
-	//display savings header on Homepage
-	wxStaticText* Savingsacc_header;
-
-	//display current header on Homepage
-	wxStaticText* Currentacc_header;
 
 	//display username on Homepage
 	wxStaticText* Acc_username;
@@ -48,7 +39,20 @@ private:
 	//display account balance on Homepage
 	wxStaticText* Acc_bal;
 
+	//display savings header on Homepage
+	wxStaticText* Savingsacc_header;
+	wxPanel* savingsacc_colorpanel;
+	wxPanel* savingsacc_headerpanel;
+	wxPanel* savingsacc_panel;
+
+	//display current header on Homepage
+	wxStaticText* Currentacc_header;
+	wxPanel* currentacc_colorpanel;
+	wxPanel* currentacc_headerpanel;
+	wxPanel* currentacc_panel;
+
 	// funds amount input box in transferfunds box
+	wxPanel* transferfunds_panel;
 	wxTextCtrl* funds_amt;
 	wxStaticText* fundsamt_header;
 	wxChoice* acctype;

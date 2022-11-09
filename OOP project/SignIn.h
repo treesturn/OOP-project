@@ -15,6 +15,9 @@ public:
 	//parameterized construnctor
 	SignIn(const wxString& title);
 
+	//destructor
+	~SignIn();
+
 	//username mutator
 	void setusername(std::string new_username);
 

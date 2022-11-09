@@ -19,10 +19,6 @@ public:
     //destructor
     ~AccountMgr();
 
-    /*std::string withdraw();
-
-    std::string deposit();*/
-
     //getters
     std::vector<Savings_Account> getsavingsAcc_vect();
 

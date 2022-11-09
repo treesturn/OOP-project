@@ -3,7 +3,7 @@
 
 #pragma once
 #include "Account.h"
-
+//child class
 class Current_Account:public Account
 {
 public:

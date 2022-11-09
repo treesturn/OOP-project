@@ -92,7 +92,7 @@ void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 
 
 				wxLogStatus("Login Button Clicked");
-				HomePage* homepage = new HomePage("HomePage");
+				HomePage* homepage = new HomePage("HomePage", acc.get_Account_username(), acc.get_Account_num());
 				homepage->SetClientSize(600, 600);
 				homepage->Center();
 				homepage->Show();
@@ -110,5 +110,11 @@ void SignIn::OnLoginButtonClicked(wxCommandEvent& event) {
 			wxLogMessage("Wrong Credentials");
 		}
 	}
+
+}
+
+//destructor
+SignIn::~SignIn()
+{
 
 }
