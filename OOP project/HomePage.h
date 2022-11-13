@@ -63,6 +63,11 @@ private:
 	wxStaticText* from_acctype;
 	wxChoice* acctype2;
 	wxStaticText* To_acctype;
+	wxButton* transferbutton;
+
+	//when transfer button clicked
+	void OntransferButtonClicked(wxCommandEvent& event);
 };
+
 
 #endif // HOMEPAGE_H

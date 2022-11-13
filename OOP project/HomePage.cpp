@@ -163,12 +163,12 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	fundsamt_header->SetFont(font4);
 
 	//funds amount input textbox
-	funds_amt = new wxTextCtrl(transferfunds_panel, wxID_ANY, "", wxPoint(10, 35), wxSize(120, -1));
+	funds_amt = new wxTextCtrl(transferfunds_panel, wxID_ANY, "", wxPoint(10, 35), wxSize(90, -1));
 	funds_amt->SetHint("Enter amount");
 
 
 	//from, account type in transferfunds panel
-	from_acctype = new wxStaticText(transferfunds_panel, wxID_ANY, "From this account... ", wxPoint(180, 15));
+	from_acctype = new wxStaticText(transferfunds_panel, wxID_ANY, "From this account... ", wxPoint(140, 15));
 	wxFont font5 = from_acctype->GetFont();
 	font5.SetPointSize(8);
 	from_acctype->SetFont(font5);
@@ -177,17 +177,22 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	wxArrayString choices;
 	choices.Add("Savings");
 	choices.Add("Current");
-	acctype = new wxChoice(transferfunds_panel, wxID_ANY, wxPoint(180, 35), wxSize(125, -1), choices);
+	acctype = new wxChoice(transferfunds_panel, wxID_ANY, wxPoint(140, 35), wxSize(90, -1), choices);
 
 	//To, account type in transferfunds panel
-	To_acctype = new wxStaticText(transferfunds_panel, wxID_ANY, "To this account... ", wxPoint(355, 15));
+	To_acctype = new wxStaticText(transferfunds_panel, wxID_ANY, "To this account... ", wxPoint(275, 15));
 	wxFont font6 = To_acctype->GetFont();
 	font6.SetPointSize(8);
 	To_acctype->SetFont(font6);
 
 	//select account type
-	acctype2 = new wxChoice(transferfunds_panel, wxID_ANY, wxPoint(355, 35), wxSize(125, -1), choices);
+	acctype2 = new wxChoice(transferfunds_panel, wxID_ANY, wxPoint(275, 35), wxSize(90, -1), choices);
 	
+	//transfer button
+	transferbutton = new wxButton(transferfunds_panel, wxID_ANY, "Transfer", wxPoint(395, 25), wxSize(80, 35));
+	
+	//binding login button to event
+	transferbutton->Bind(wxEVT_BUTTON, &HomePage::OntransferButtonClicked, this);
 
 
 
@@ -199,5 +204,10 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 //destructor
 HomePage::~HomePage()
 {
+
+}
+
+//When transfer Button is Clicked, use HP_ACCMGR to transfer money between savings and current
+void HomePage::OntransferButtonClicked(wxCommandEvent& event) {
 
 }
