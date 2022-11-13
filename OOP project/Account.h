@@ -37,6 +37,7 @@ public:
 	//PURE virtual function that must be overidden in child class, making this class an ABC
 	virtual std::string title_header() const = 0;
 
+
 private:
 
 	//members

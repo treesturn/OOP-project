@@ -1,5 +1,6 @@
 #include "Savings_Account.h"
 
+
 //default constructor
 Savings_Account::Savings_Account()
 {
@@ -36,6 +37,7 @@ float Savings_Account::getinterestrate() const
 float Savings_Account::getAccount_bal() const
 {
 	return Account_bal;
+
 }
 
 float Savings_Account::getInterest() const

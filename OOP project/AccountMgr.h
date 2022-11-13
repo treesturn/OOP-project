@@ -23,29 +23,33 @@ public:
 
     //getters
     std::vector<Account*>getAcc_DB();
-    Account* getchosen_acc();
+    Account* getchosen_SavAcc();
+    Account* getchosen_CurrAcc();
 
   
 
 private:
 
-    int chosen_accnum;
-    Account* chosen_acc;
+    int chosen_SavAccnum;
+    int chosen_CurrAccnum;
+
+    Account* chosen_SavAcc;
+    Account* chosen_CurrAcc;
 
     //vector of Account pointer type
     std::vector<Account*> Accs_DB = {
 
-      new Savings_Account{"Zeming", 2101800, "124", 4000.50, 0.04},
-      new Current_Account{"Zeming", 3101800, "124", 4000.50},
+      new Savings_Account{"Zeming", 2101800, "124", 5000.50, 0.04},
+      new Current_Account{"Zeming", 2101801, "124", 4000.50},
 
-      new Savings_Account{"Triston", 2101793, "123", 2500.50, 0.04},
-      new Current_Account{"Triston", 3101793, "123", 2500.50},
+      new Savings_Account{"Triston", 2101793, "123", 4500.50, 0.04},
+      new Current_Account{"Triston", 2101794, "123", 2500.50},
 
-      new Savings_Account{"Brook", 2101789, "125", 5600.50, 0.04},
-      new Current_Account{"Brook", 3101789, "125", 5600.50},
+      new Savings_Account{"Brook", 2101789, "125", 6600.50, 0.04},
+      new Current_Account{"Brook", 2101790, "125", 5600.50},
 
-      new Savings_Account{"Jonathan", 2101200, "126", 6500.50, 0.04},
-      new Current_Account{"Jonathan", 3101200, "126", 6500.50}
+      new Savings_Account{"Jonathan", 2101200, "126", 7500.50, 0.04},
+      new Current_Account{"Jonathan", 2101201, "126", 6500.50}
 
     };
 

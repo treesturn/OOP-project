@@ -16,7 +16,9 @@ HomePage::HomePage() {
 HomePage::HomePage(const wxString& title, std::string username, int chosen_accnum) :wxFrame(nullptr, wxID_ANY, title) {
 
 	Acc_username_text = username;
-	chosen_accnum = chosen_accnum;
+	//User savings and current account can be excessed togther in one session
+	chosen_Sav_accnum = chosen_accnum; 
+	chosen_Curr_accnum = chosen_accnum;
 
 	//instantiate the Accounts
 	Savings_Account a = Savings_Account("Triston Chan", 2101793, "123", 2500.50, 0.04);
@@ -47,7 +49,7 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	//savings account box
 	savingsacc_panel = new wxPanel(btmpanel);
 	savingsacc_panel->SetBackgroundColour(wxColor(220, 220, 226));
-	savingsacc_panel->SetSize(200, 300);
+	savingsacc_panel->SetSize(200, 250);
 	savingsacc_panel->SetPosition(wxPoint(50, 70));
 
 	savingsacc_headerpanel = new wxPanel(btmpanel);
@@ -63,7 +65,7 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	//current account box
 	currentacc_panel = new wxPanel(btmpanel);
 	currentacc_panel->SetBackgroundColour(wxColor(220, 220, 226));
-	currentacc_panel->SetSize(200, 300);
+	currentacc_panel->SetSize(200, 250);
 	currentacc_panel->SetPosition(wxPoint(340, 70));
 
 	currentacc_headerpanel = new wxPanel(btmpanel);
@@ -80,7 +82,7 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	transferfunds_panel = new wxPanel(btmpanel);
 	transferfunds_panel->SetBackgroundColour(wxColor(220, 220, 226));
 	transferfunds_panel->SetSize(490, 80);
-	transferfunds_panel->SetPosition(wxPoint(50, 400));
+	transferfunds_panel->SetPosition(wxPoint(50, 350));
 
 
 
@@ -92,7 +94,7 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	Welcome_Message->SetFont(font);
 	Welcome_Message->SetForegroundColour(*wxWHITE);
 
-	//display savingsacc title header on Homepage savingsacc box
+	//display savingsacc title header on Homepage savingsacc box (Polymorphism, ACCOUNT type element using child class; SAVINGS_ACCOUNT type functions)
 	Savingsacc_header = new wxStaticText(savingsacc_headerpanel, wxID_ANY, a.title_header(), wxPoint(19, 30));
 	wxFont font2 = Savingsacc_header->GetFont();
 	font2.SetPointSize(11);
@@ -100,24 +102,59 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	Savingsacc_header->SetFont(font2);
 	Savingsacc_header->SetForegroundColour(*wxWHITE);
 
-	//display username on Homepage savingsacc box
-	Acc_username = new wxStaticText(savingsacc_panel, wxID_ANY, (HP_accmgr.getchosen_acc())->get_Account_username(), wxPoint(10, 100));
+	//display username on Homepage savingsacc box (Polymorphism, ACCOUNT type element using child class; SAVINGS_ACCOUNT type functions)
+	Acc_username = new wxStaticText(savingsacc_panel, wxID_ANY, (HP_accmgr.getchosen_SavAcc())->get_Account_username(), wxPoint(10, 100));
+	wxFont name_font = Acc_username->GetFont();
+	name_font.SetPointSize(11);
+	name_font.SetWeight(wxFONTWEIGHT_BOLD);
+	Acc_username->SetFont(name_font);
 
 	//display account id on Homepage savingsacc box
-	Acc_id = new wxStaticText(savingsacc_panel, wxID_ANY, to_string((HP_accmgr.getchosen_acc())->get_Account_num()), wxPoint(10, 150));
+	Acc_id = new wxStaticText(savingsacc_panel, wxID_ANY, to_string((HP_accmgr.getchosen_SavAcc())->get_Account_num()), wxPoint(10, 150));
+	wxFont id_font = Acc_id->GetFont();
+	id_font.SetPointSize(11);
+	id_font.SetWeight(wxFONTWEIGHT_BOLD);
+	Acc_id->SetFont(id_font);
 
 	//display account balance on Homepage savingsacc box
-	Acc_bal = new wxStaticText(savingsacc_panel, wxID_ANY, to_string((HP_accmgr.getchosen_acc())->get_Account_bal()), wxPoint(10, 200));
+	Acc_bal = new wxStaticText(savingsacc_panel, wxID_ANY, '$' + to_string((HP_accmgr.getchosen_SavAcc())->get_Account_bal()), wxPoint(10, 200));
+	wxFont bal_font = Acc_bal->GetFont();
+	bal_font.SetPointSize(11);
+	bal_font.SetWeight(wxFONTWEIGHT_BOLD);
+	Acc_bal->SetFont(bal_font);
 
 
+	//display username on Homepage currentsacc box (Polymorphism, ACCOUNT type element using child class; CURRENT_ACCOUNT type functions)
+	Acc_username2 = new wxStaticText(currentacc_panel, wxID_ANY, (HP_accmgr.getchosen_CurrAcc())->get_Account_username(), wxPoint(10, 100));
+	wxFont name_font2 = Acc_username2->GetFont();
+	name_font2.SetPointSize(11);
+	name_font2.SetWeight(wxFONTWEIGHT_BOLD);
+	Acc_username2->SetFont(name_font2);
 
-	//display currentsacc title header on Homepage currentsacc box
-	Currentacc_header = new wxStaticText(currentacc_headerpanel, wxID_ANY, b.title_header(), wxPoint(20, 30));
+	////display account id on Homepage savingsacc box
+	Acc_id2 = new wxStaticText(currentacc_panel, wxID_ANY, to_string((HP_accmgr.getchosen_CurrAcc())->get_Account_num()), wxPoint(10, 150));
+	wxFont id_font2 = Acc_id2->GetFont();
+	id_font2.SetPointSize(11);
+	id_font2.SetWeight(wxFONTWEIGHT_BOLD);
+	Acc_id2->SetFont(id_font2);
+
+	////display account balance on Homepage savingsacc box
+	Acc_bal2 = new wxStaticText(currentacc_panel, wxID_ANY, '$' + to_string((HP_accmgr.getchosen_CurrAcc())->get_Account_bal()), wxPoint(10, 200));
+	wxFont bal_font2 = Acc_bal2->GetFont();
+	bal_font2.SetPointSize(11);
+	bal_font2.SetWeight(wxFONTWEIGHT_BOLD);
+	Acc_bal2->SetFont(bal_font2);
+
+
+	//display currentsacc title header on Homepage currentsacc box (Polymorphism, ACCOUNT type element using child class; CURRENT_ACCOUNT type functions)
+	Currentacc_header = new wxStaticText(currentacc_headerpanel, wxID_ANY, HP_accmgr.getchosen_CurrAcc()->title_header(), wxPoint(20, 30));
 	wxFont font3 = Currentacc_header->GetFont();
 	font3.SetPointSize(11);
 	font3.SetWeight(wxFONTWEIGHT_BOLD);
 	Currentacc_header->SetFont(font3);
 	Currentacc_header->SetForegroundColour(*wxWHITE);
+
+
 
 	//funds amount input box in transferfunds panel
 	fundsamt_header = new wxStaticText(transferfunds_panel, wxID_ANY, "I want to transfer... ", wxPoint(10, 15));

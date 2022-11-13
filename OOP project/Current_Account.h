@@ -16,6 +16,9 @@ public:
     //destructor
     ~Current_Account();
 
+    //getters
+    float getAccount_bal() const;
+
     //pure virtual function from parent class
     std::string title_header() const override;
 

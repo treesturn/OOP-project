@@ -27,29 +27,33 @@ private:
 	//display 
 	wxStaticText* Welcome_Message; 
 	std::string Acc_username_text;
-	int chosen_accnum;
+	int chosen_Sav_accnum;
+	int chosen_Curr_accnum;
 
 
-	//display username on Homepage
-	wxStaticText* Acc_username;
-
-	//display account id on Homepage
-	wxStaticText* Acc_id;
-
-	//display account balance on Homepage
-	wxStaticText* Acc_bal;
 
 	//display savings header on Homepage
 	wxStaticText* Savingsacc_header;
 	wxPanel* savingsacc_colorpanel;
 	wxPanel* savingsacc_headerpanel;
 	wxPanel* savingsacc_panel;
+	//display username on Homepage
+	wxStaticText* Acc_username;
+	//display account id on Homepage
+	wxStaticText* Acc_id;
+	//display account balance on Homepage
+	wxStaticText* Acc_bal;
 
 	//display current header on Homepage
 	wxStaticText* Currentacc_header;
 	wxPanel* currentacc_colorpanel;
 	wxPanel* currentacc_headerpanel;
 	wxPanel* currentacc_panel;
+	wxStaticText* Acc_username2;
+	//display account id on Homepage
+	wxStaticText* Acc_id2;
+	//display account balance on Homepage
+	wxStaticText* Acc_bal2;
 
 	// funds amount input box in transferfunds box
 	wxPanel* transferfunds_panel;
