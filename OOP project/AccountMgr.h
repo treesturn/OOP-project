@@ -26,7 +26,10 @@ public:
     Account* getchosen_SavAcc();
     Account* getchosen_CurrAcc();
 
-  
+    void savings_to_current(float amnt);
+    void current_to_savings(float amnt);
+    
+    float savings_to_current(float new_amnt, float old_amnt);
 
 private:
 

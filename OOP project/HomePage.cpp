@@ -7,25 +7,57 @@
 #include <string.h>
 using namespace std;
 
+
+
 //Home Page default constructor
 HomePage::HomePage() {
 
 }
 
+//mutators
+void HomePage::set_sav_bal(float amt)
+{
+	sav_bal = amt;
+
+}
+
+void HomePage::set_curr_bal(float amt) 
+{
+	curr_bal = amt;
+}
+
+//getter
+float HomePage::get_sav_bal()
+{
+	return sav_bal;
+}
+
+float HomePage::get_curr_bal()
+{
+	return curr_bal;
+}
+
+
 //Home Page parameterized constructor
 HomePage::HomePage(const wxString& title, std::string username, int chosen_accnum) :wxFrame(nullptr, wxID_ANY, title) {
+
 
 	Acc_username_text = username;
 	//User savings and current account can be excessed togther in one session
 	chosen_Sav_accnum = chosen_accnum; 
-	chosen_Curr_accnum = chosen_accnum;
+	chosen_Curr_accnum = chosen_accnum+1;
 
 	//instantiate the Accounts
-	Savings_Account a = Savings_Account("Triston Chan", 2101793, "123", 2500.50, 0.04);
-	Current_Account b = Current_Account("Triston Chan", 2101793, "123", 2500.50);
+	//Savings_Account a = Savings_Account("Triston Chan", 2101793, "123", 2500.50, 0.04);
+	//Current_Account b = Current_Account("Triston Chan", 2101793, "123", 2500.50);
 
 	//instantiate an Account Manager
 	AccountMgr HP_accmgr(chosen_accnum);
+
+	curr_bal = (HP_accmgr.getchosen_CurrAcc())->get_Account_bal();
+	sav_bal = (HP_accmgr.getchosen_SavAcc())->get_Account_bal();
+
+
 
 	//instantiate Home Page page AccountMgr 
 	//AccountMgr HP_accmgr;
@@ -95,7 +127,7 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	Welcome_Message->SetForegroundColour(*wxWHITE);
 
 	//display savingsacc title header on Homepage savingsacc box (Polymorphism, ACCOUNT type element using child class; SAVINGS_ACCOUNT type functions)
-	Savingsacc_header = new wxStaticText(savingsacc_headerpanel, wxID_ANY, a.title_header(), wxPoint(19, 30));
+	Savingsacc_header = new wxStaticText(savingsacc_headerpanel, wxID_ANY, HP_accmgr.getchosen_SavAcc()->title_header(), wxPoint(19, 30));
 	wxFont font2 = Savingsacc_header->GetFont();
 	font2.SetPointSize(11);
 	font2.SetWeight(wxFONTWEIGHT_BOLD);
@@ -114,10 +146,10 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	wxFont id_font = Acc_id->GetFont();
 	id_font.SetPointSize(11);
 	id_font.SetWeight(wxFONTWEIGHT_BOLD);
-	Acc_id->SetFont(id_font);
+	Acc_id->SetFont(id_font); 
 
 	//display account balance on Homepage savingsacc box
-	Acc_bal = new wxStaticText(savingsacc_panel, wxID_ANY, '$' + to_string((HP_accmgr.getchosen_SavAcc())->get_Account_bal()), wxPoint(10, 200));
+	Acc_bal = new wxStaticText(savingsacc_panel, wxID_ANY, '$' + to_string(get_sav_bal()), wxPoint(10, 200));
 	wxFont bal_font = Acc_bal->GetFont();
 	bal_font.SetPointSize(11);
 	bal_font.SetWeight(wxFONTWEIGHT_BOLD);
@@ -139,7 +171,7 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	Acc_id2->SetFont(id_font2);
 
 	////display account balance on Homepage savingsacc box
-	Acc_bal2 = new wxStaticText(currentacc_panel, wxID_ANY, '$' + to_string((HP_accmgr.getchosen_CurrAcc())->get_Account_bal()), wxPoint(10, 200));
+	Acc_bal2 = new wxStaticText(currentacc_panel, wxID_ANY, '$' + to_string(get_curr_bal()), wxPoint(10, 200));
 	wxFont bal_font2 = Acc_bal2->GetFont();
 	bal_font2.SetPointSize(11);
 	bal_font2.SetWeight(wxFONTWEIGHT_BOLD);
@@ -194,7 +226,9 @@ HomePage::HomePage(const wxString& title, std::string username, int chosen_accnu
 	//binding login button to event
 	transferbutton->Bind(wxEVT_BUTTON, &HomePage::OntransferButtonClicked, this);
 
-
+	//When transfer Button is Clicked, use HP_ACCMGR to transfer money between savings and current
+	//void OntransferButtonClicked(wxCommandEvent& event);
+	
 
 	CreateStatusBar();
 
@@ -207,7 +241,37 @@ HomePage::~HomePage()
 
 }
 
-//When transfer Button is Clicked, use HP_ACCMGR to transfer money between savings and current
-void HomePage::OntransferButtonClicked(wxCommandEvent& event) {
+void HomePage::OntransferButtonClicked(wxCommandEvent& event)
+{
+	wxLogStatus("transfer Button Clicked");
+
+	AccountMgr mgr(chosen_Sav_accnum);
+
+	if ((acctype->GetString(acctype->GetCurrentSelection()) == "Savings") && (acctype2->GetString(acctype2->GetCurrentSelection()) == "Current"))
+	{
+
+		float amount = std::stof(funds_amt->GetValue().ToStdString());
+		mgr.savings_to_current(amount);
+
+		set_curr_bal((mgr.getchosen_CurrAcc())->get_Account_bal());
+		set_sav_bal((mgr.getchosen_SavAcc())->get_Account_bal());
+
+		Acc_bal->SetLabel("$" + to_string(get_sav_bal()));
+		Acc_bal2->SetLabel("$" + to_string(get_curr_bal()));
+
+	}
+	else if ((acctype->GetString(acctype->GetCurrentSelection()) == "Current") && (acctype2->GetString(acctype2->GetCurrentSelection()) == "Savings"))
+	{
+
+		float amount = std::stof(funds_amt->GetValue().ToStdString());
+		mgr.current_to_savings(amount);
+
+		set_curr_bal((mgr.getchosen_CurrAcc())->get_Account_bal());
+		set_sav_bal((mgr.getchosen_SavAcc())->get_Account_bal());
+
+		Acc_bal->SetLabel("$" + to_string(get_sav_bal()));
+		Acc_bal2->SetLabel("$" + to_string(get_curr_bal()));
+	}
+
 
 }

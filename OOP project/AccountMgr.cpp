@@ -62,3 +62,25 @@ Account* AccountMgr::getchosen_CurrAcc()
 {
 	return chosen_CurrAcc;
 }
+
+
+
+void AccountMgr::savings_to_current(float amnt)
+{
+
+	int new_savingsbal = (chosen_SavAcc->get_Account_bal()) - amnt;
+	int new_currentbal = (chosen_CurrAcc->get_Account_bal()) + amnt;
+	
+	chosen_SavAcc->set_Account_bal(new_savingsbal);
+	chosen_CurrAcc->set_Account_bal(new_currentbal);
+}
+
+
+void AccountMgr::current_to_savings(float amnt)
+{
+	int new_savingsbal = (chosen_SavAcc->get_Account_bal()) + amnt;
+	int new_currentbal = (chosen_CurrAcc->get_Account_bal()) - amnt;
+
+	chosen_SavAcc->set_Account_bal(new_savingsbal);
+	chosen_CurrAcc->set_Account_bal(new_currentbal);
+}

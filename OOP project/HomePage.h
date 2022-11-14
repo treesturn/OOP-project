@@ -1,6 +1,7 @@
 #ifndef HOMEPAGE_H
 #define HOMEPAGE_H
 
+
 #pragma once
 #include <wx/wx.h>
 
@@ -17,6 +18,14 @@ public:
 	//destructor
 	~HomePage();
 
+	//mutator
+	void set_sav_bal(float amt);
+	void set_curr_bal(float amt);
+
+	//getter
+	float get_sav_bal();
+	float get_curr_bal();
+
 private:
 
 	wxPanel* headerpanel;
@@ -31,7 +40,6 @@ private:
 	int chosen_Curr_accnum;
 
 
-
 	//display savings header on Homepage
 	wxStaticText* Savingsacc_header;
 	wxPanel* savingsacc_colorpanel;
@@ -43,6 +51,7 @@ private:
 	wxStaticText* Acc_id;
 	//display account balance on Homepage
 	wxStaticText* Acc_bal;
+	float sav_bal;
 
 	//display current header on Homepage
 	wxStaticText* Currentacc_header;
@@ -54,6 +63,7 @@ private:
 	wxStaticText* Acc_id2;
 	//display account balance on Homepage
 	wxStaticText* Acc_bal2;
+	float curr_bal;
 
 	// funds amount input box in transferfunds box
 	wxPanel* transferfunds_panel;
@@ -67,6 +77,7 @@ private:
 
 	//when transfer button clicked
 	void OntransferButtonClicked(wxCommandEvent& event);
+
 };
 
 
